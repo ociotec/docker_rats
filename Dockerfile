@@ -1,4 +1,8 @@
 FROM alpine:latest AS builder
+ARG BUILD_ID
+ENV BUILD_ID=$BUILD_ID
+LABEL stage=builder
+LABEL build=$BUILD_ID
 LABEL maintainer="emilio@ociotec.com"
 
 RUN apk add --no-cache wget make gcc musl-dev
@@ -19,7 +23,9 @@ RUN wget https://storage.googleapis.com/google-code-archive-downloads/v2/code.go
 
 
 FROM alpine:latest
+ARG BUILD_ID
+ENV BUILD_ID=$BUILD_ID
+LABEL build=$BUILD_ID
 LABEL maintainer="emilio@ociotec.com"
 
 COPY --from=builder /usr/local/ /usr/local/
-
