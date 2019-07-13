@@ -1,2 +1,4 @@
-# docker_rats
-Docker RATS source code analyzer
+# Docker RATS
+
+Docker RATS source code analyzer.
+
