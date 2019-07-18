@@ -1,4 +1,4 @@
-FROM alpine:latest AS builder
+FROM alpine:latest AS rats_builder
 LABEL maintainer="emilio@ociotec.com"
 
 RUN apk add --no-cache wget make gcc musl-dev
@@ -18,7 +18,7 @@ RUN wget https://storage.googleapis.com/google-code-archive-downloads/v2/code.go
     make install
 
 
-FROM alpine:latest
+FROM alpine:latest AS rats
 LABEL maintainer="emilio@ociotec.com"
 
 COPY --from=builder /usr/local/ /usr/local/
