@@ -21,4 +21,4 @@ RUN wget https://storage.googleapis.com/google-code-archive-downloads/v2/code.go
 FROM alpine:latest AS rats
 LABEL maintainer="emilio@ociotec.com"
 
-COPY --from=builder /usr/local/ /usr/local/
+COPY --from=rats_builder /usr/local/ /usr/local/
